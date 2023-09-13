@@ -11,11 +11,11 @@ public class MainMenu {
     private final String rootPath;
     private final Scanner scanner = new Scanner(System.in);
 
-    public MainMenu(String rootPath) {
+    public MainMenu(String rootPath) {  //constructor
         this.rootPath = rootPath;
     }
 
-    public void run() throws ProperOptionValue {
+    public void run() throws ProperOptionValue {  //run method
         String con;
         do {
             displayMenu();
@@ -31,24 +31,24 @@ public class MainMenu {
                     break;
                 case 3:
                     System.out.println("Goodbye!");
-                    System.exit(0);
+                    System.exit(0);   //closes the application
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
 
-            con = getUserInput("MainMenu: Do you want to continue? (y/n)");
-        } while ("y".equalsIgnoreCase(con));
+            con = getUserInput("MainMenu: Do you want to display options again? (y)");
+        } while ("y".equals(con));
     }
 
-    private void displayMenu() {
-        System.out.println("Menu");
+    private void displayMenu() {   // display main menu options
+        System.out.println("Main Menu Options:");
         System.out.println("1. List files in ascending order");
         System.out.println("2. Navigate to the Operations Menu");
         System.out.println("3. Close the application");
         System.out.println("Please enter your choice");
     }
 
-    private int getUserChoice() throws ProperOptionValue {
+    private int getUserChoice() throws ProperOptionValue {  // get choice from menu
         while (true) {
             try {
                 return scanner.nextInt();
@@ -60,7 +60,7 @@ public class MainMenu {
         }
     }
 
-    private void listFilesAscendingOrder() {
+    private void listFilesAscendingOrder() {   //display all files in ascending order
         File rootDirectory = new File(rootPath);
         String[] listOfFiles = rootDirectory.list();
         Arrays.sort(listOfFiles);
@@ -69,7 +69,7 @@ public class MainMenu {
         }
     }
 
-    private String getUserInput(String prompt) {
+    private String getUserInput(String prompt) {  // read the input Y and return as lowercase
         System.out.println(prompt);
         return scanner.next().toLowerCase();
     }

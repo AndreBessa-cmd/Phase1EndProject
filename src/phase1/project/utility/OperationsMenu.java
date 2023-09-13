@@ -10,7 +10,7 @@ public class OperationsMenu {
     private final String rootPath;
     private final Scanner scanner = new Scanner(System.in);
 
-    public OperationsMenu(String rootPath) {
+    public OperationsMenu(String rootPath) {  //constructor
         this.rootPath = rootPath;
     }
 
@@ -36,15 +36,15 @@ public class OperationsMenu {
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
                
-            con = getUserInput("OperationsMenu: Do you want to continue? (y/n)");
+            con = getUserInput("OperationsMenu: Do you want to display options again? (y)");
             
               
         } while ("y".equalsIgnoreCase(con));
     }
     
 
-    private void displayMenu() {
-        System.out.println("Operations Menu Options");
+    private void displayMenu() {  // display operation menu options
+        System.out.println("Operations Menu Options:");
         System.out.println("1. Add a file to the directory list");
         System.out.println("2. Delete a file from the directory list");
         System.out.println("3. Search for a file in the directory");
@@ -52,7 +52,7 @@ public class OperationsMenu {
         System.out.println("Please enter your choice");
     }
 
-    private int getUserChoice() throws ProperOptionValue {
+    private int getUserChoice() throws ProperOptionValue { // get choices from operations
         while (true) {
             try {
                 return scanner.nextInt();
@@ -64,18 +64,18 @@ public class OperationsMenu {
         }
     }
 
-    private void addFile() {
+    private void addFile() {  //add file method
         String filename = getUserInput("Please enter the file name");
         File file = new File(rootPath + File.separator + filename);
 
-        if (file.exists()) {
-            System.out.println("File already exists.");
+        if (file.exists()) {   //validates if file already exists
+            System.out.println("File already exists");
         } else {
             try {
-                if (file.createNewFile()) {
+                if (file.createNewFile()) {  // creates the file
                     System.out.println("New file created with name: " + filename);
                 } else {
-                    System.out.println("Failed to create the file.");
+                    System.out.println("Failed to create the file");
                 }
             } catch (Exception e) {
                 System.out.println("An error occurred: " + e.getMessage());
@@ -83,29 +83,29 @@ public class OperationsMenu {
         }
     }
 
-    private void deleteFile() {
+    private void deleteFile() {  //delete file method
         String filename = getUserInput("Please enter the file name");
         File file = new File(rootPath + File.separator + filename);
 
-        if (file.exists() && file.delete()) {
-            System.out.println("File deleted.");
+        if (file.exists() && file.delete()) {  //validates if file exists and deletes it, return true
+            System.out.println("File deleted");
         } else {
             System.out.println("File not present with the name: " + filename);
         }
     }
 
-    private void searchFile() {
+    private void searchFile() { //method to search file
         String filename = getUserInput("Please enter the file name");
         File file = new File(rootPath + File.separator + filename);
 
-        if (file.exists()) {
-            System.out.println("File exists.");
+        if (file.exists()) {//check if file exists
+            System.out.println("File exists");
         } else {
-            System.out.println("File not present.");
+            System.out.println("File not present");
         }
     }
 
-    private String getUserInput(String prompt) {
+    private String getUserInput(String prompt) {  //reads the user inputs
         System.out.println(prompt);
         return scanner.next();
     }

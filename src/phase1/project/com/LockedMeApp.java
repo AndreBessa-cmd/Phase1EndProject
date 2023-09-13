@@ -12,8 +12,8 @@ public class LockedMeApp {
         System.out.println("Welcome to LockedMe.com Virtual Key");
         System.out.println("Developer: André Bessa");
 
-        MainMenu mainMenu = new MainMenu(rootpath);
-        mainMenu.run();
+        MainMenu mainMenu = new MainMenu(rootpath); //object creation
+        mainMenu.run();  //calls run method from MainMenu class
 
         System.out.println("Goodbye!");
     }
