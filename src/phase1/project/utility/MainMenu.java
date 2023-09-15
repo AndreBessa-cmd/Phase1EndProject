@@ -48,18 +48,18 @@ public class MainMenu {
         System.out.println("Please enter your choice");
     }
 
-    private int getUserChoice() throws ProperOptionValue {  // get choice from menu
+
+    private int getUserChoice() {
         while (true) {
             try {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-            	scanner.nextLine();  // Consume the invalid input
-                throw new ProperOptionValue("Invalid input. Please enter a valid number.");
-                
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Consume the invalid input
             }
         }
     }
-
+    
     private void listFilesAscendingOrder() {   //display all files in ascending order
         File rootDirectory = new File(rootPath);
         String[] listOfFiles = rootDirectory.list();

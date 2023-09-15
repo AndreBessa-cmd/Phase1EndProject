@@ -9,7 +9,7 @@ public class LockedMeApp {
 	private static final String rootpath = new File("").getAbsolutePath();
 
     public static void main(String[] args) throws ProperOptionValue {
-        System.out.println("Welcome to LockedMe.com Virtual Key");
+        System.out.println("Welcome to LockedMe.com App");
         System.out.println("Developer: André Bessa");
 
         MainMenu mainMenu = new MainMenu(rootpath); //object creation

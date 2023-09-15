@@ -14,7 +14,7 @@ public class OperationsMenu {
         this.rootPath = rootPath;
     }
 
-    public void run() throws ProperOptionValue {
+    public void run() throws ProperOptionValue { //run method
         String con;
         do {
             displayMenu();
@@ -52,20 +52,19 @@ public class OperationsMenu {
         System.out.println("Please enter your choice");
     }
 
-    private int getUserChoice() throws ProperOptionValue { // get choices from operations
+    private int getUserChoice() {
         while (true) {
             try {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-            	scanner.nextLine();  // Consume the invalid input
-                throw new ProperOptionValue("Invalid input. Please enter a valid number.");
-                
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Consume the invalid input
             }
         }
     }
 
-    private void addFile() {  //add file method
-        String filename = getUserInput("Please enter the file name");
+    private void addFile() throws ProperOptionValue {  //add file method
+        String filename = getUserInput("Please enter the file name").toLowerCase(); // Convert to lowercase to ignore case sensitivity
         File file = new File(rootPath + File.separator + filename);
 
         if (file.exists()) {   //validates if file already exists
@@ -78,7 +77,7 @@ public class OperationsMenu {
                     System.out.println("Failed to create the file");
                 }
             } catch (Exception e) {
-                System.out.println("An error occurred: " + e.getMessage());
+            	throw new ProperOptionValue("An error occurred: " + e.getMessage());
             }
         }
     }
